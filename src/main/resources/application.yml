@@ -3,7 +3,7 @@ spring:
   name:
     database-pg
   datasource:
-    url: jdbc:postgresql://localhost:5432/pay-system?lc_messages=en_US
+    url: jdbc:postgresql://localhost:5432/pay-system
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
