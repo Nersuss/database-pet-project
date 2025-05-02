@@ -1,0 +1,15 @@
+spring:
+  application:
+  name:
+    database-pg
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pay-system
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
