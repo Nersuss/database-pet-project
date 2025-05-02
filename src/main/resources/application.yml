@@ -3,13 +3,24 @@ spring:
   name:
     database-pg
   datasource:
-    url: jdbc:postgresql://localhost:5432/pay-system
+    url: jdbc:postgresql://localhost:5432/pay-system?lc_messages=en_US
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+    drop-first: true
+    default-schema: public
+    user: postgres
+    password: postgres
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
+  gradle:
+    caching:
+      debug: false
+  logging:
+    charset:
+      console=UTF-8:
