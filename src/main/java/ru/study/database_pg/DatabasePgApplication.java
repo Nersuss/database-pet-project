@@ -28,5 +28,8 @@ public class DatabasePgApplication implements CommandLineRunner {
 		String sql_make_pay = "call make_pay(?, ?, ?)";
 		int res = jdbcTemplate.update(sql_make_pay, "email1", "email2", 1000);
 
+//		String sql_get_payments = "get_payments_by_user_id(?)";
+//		System.out.println(jdbcTemplate.update(sql_get_payments, 1));
+
 	}
 }
