@@ -7,4 +7,5 @@ create table users(
     password varchar(127) not null,
     name varchar(127) not null,
     account int8 not null default 000
+
 );

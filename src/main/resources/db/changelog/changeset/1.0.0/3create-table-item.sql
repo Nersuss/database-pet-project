@@ -1,10 +1,11 @@
 --liquibase formatted sql
 --changeset Priamonosov Maksim:1.0.0
 
-create table transfers(
+create table items(
     id bigserial primary key,
-    sum int8 not null,
-    dest_email varchar(127) not null,
-    user_id bigint not null,
+    name varchar(255) not null,
+    cost int8 not null,
+    user_id bigint,
+
     foreign key (user_id) references users (id) on delete cascade
 );

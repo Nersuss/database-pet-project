@@ -2,7 +2,7 @@
 --changeset Priamonosov Maksim:1.0.1 splitStatements:false
 
 set transaction isolation level serializable;
-create or replace procedure make_pay(out_email varchar(255), dest_email varchar(255), sum int8) as $$
+create or replace procedure make_transfer(out_email varchar(255), dest_email varchar(255), sum int8) as $$
 
 declare
     out_account int8 := (select account from users where email = out_email);
@@ -20,6 +20,6 @@ begin
     update users set account=account-sum where email = out_email;
     update users set account=account+sum where email = dest_email;
 
-    insert into payments(sum, dest_email, user_id) values (sum, dest_email, out_id);
+    insert into transfers(sum, dest_email, user_id) values (sum, dest_email, out_id);
 end;
 $$ language plpgsql;
