@@ -25,5 +25,6 @@ begin
     update users set account=account-item_cost where id = u_user_id;
     update items set user_id = u_user_id where id = item_id;
 
+    insert into purchases (date, user_id, item_id) values((select LOCALTIMESTAMP), u_user_id, item_id);
 end;
 $$ language plpgsql;

@@ -35,6 +35,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 	implementation("org.hibernate:hibernate-core:6.6.11.Final")
+	implementation("org.springframework.boot:spring-boot-starter-activemq")
 }
 
 tasks.withType<Test> {

@@ -24,3 +24,9 @@ spring:
   logging:
     charset:
       console=UTF-8:
+  activemq:
+    url: http://127.0.0.1:8161
+    user: admin
+    password: admin
+    embedded:
+      enabled: false
