@@ -2,24 +2,23 @@
 --changeset Priamonosov Maksim:1.0.1 splitStatements:false
 
 set transaction isolation level serializable;
-create or replace procedure make_transfer(out_email varchar(255), dest_email varchar(255), sum int8) as $$
+create or replace procedure make_transfer(out_user_id bigint, dest_user_id bigint, sum int8) as $$
 
 declare
-    out_account int8 := (select account from users where email = out_email);
-    out_id bigint := (select id from users where email = out_email);
-    dest_account int8 := (select account from users where email = dest_email);
+    out_account int8 := (select account from users where id = out_user_id);
+    dest_account int8 := (select account from users where id = dest_user_id);
 begin
-    if out_email = dest_email
+    if out_user_id = dest_user_id
         then raise exception 'You cannot send money myself.';
     end if;
 
     if out_account is null or dest_account is null
-        then raise exception 'User not found: %', dest_email;
+        then raise exception 'User not found: %', dest_user_id;
     end if;
 
-    update users set account=account-sum where email = out_email;
-    update users set account=account+sum where email = dest_email;
+    update users set account=account-sum where id = out_user_id;
+    update users set account=account+sum where id = dest_user_id;
 
-    insert into transfers(sum, dest_email, user_id) values (sum, dest_email, out_id);
+    insert into transfers(sum, dest_user_id, user_id) values (sum, dest_user_id, out_user_id);
 end;
 $$ language plpgsql;

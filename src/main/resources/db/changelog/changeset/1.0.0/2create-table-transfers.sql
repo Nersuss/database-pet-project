@@ -4,7 +4,7 @@
 create table transfers(
     id bigserial primary key,
     sum int8 not null,
-    dest_email varchar(127) not null,
+    dest_user_id bigint not null,
     user_id bigint not null,
     foreign key (user_id) references users (id) on delete cascade
 );

@@ -23,11 +23,11 @@ public class InitDb {
 
     public void makeTransfers(){
         String sql = "call make_transfer(?, ?, ?)";
-        jdbcTemplate.update(sql, "email1", "email2", 100);
+        jdbcTemplate.update(sql, 1, 2, 100);
         producer.send("base", "made some transfer");
-        jdbcTemplate.update(sql, "email2", "email3", 100);
+        jdbcTemplate.update(sql, 2, 3, 100);
         producer.send("base", "made some transfer");
-        jdbcTemplate.update(sql, "email3", "email4", 100);
+        jdbcTemplate.update(sql, 3, 4, 100);
         producer.send("base", "made some transfer");
     }
 
