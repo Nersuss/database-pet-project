@@ -12,7 +12,7 @@
     - username: postgres
     - password: postgres
 4. Запустить **ActiveMQ**
-5. Заменить логин и пароль от **ActiveMQ**
+5. Заменить логин и пароль от **ActiveMQ**\
 Файл **application.yml**
 - activemq:
   - url: http://127.0.0.1:8161
